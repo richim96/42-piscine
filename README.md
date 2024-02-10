@@ -1,2 +1,4 @@
-# 42_piscine
-Home progress on 42 Piscine projects.
+# 42 piscine
+42 Piscine projects.
+
+1. City blocks.

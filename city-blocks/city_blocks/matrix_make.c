@@ -10,24 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "guard_lib.h"
 
-/* Malloc to create reusable arrays */
-int	*ft_matrix_init(void);
-
-int	*ft_matrix_2d_init(void)
+char	**ft_matrix_2d_init(int grid_size)
 {
-	int	matrix_1[5];
-	int	matrix_2[5];
-	int	matrix_3[5];
-	int	matrix_4[5];
-	int	matrix_2d[5];
+	char	**matrix_2d;
+	int		i;
+	int		j;
 
-	matrix_1 = {0, 0, 0, 0, '\0'};
-	matrix_2 = {0, 0, 0, 0, '\0'};
-	matrix_3 = {0, 0, 0, 0, '\0'};
-	matrix_4 = {0, 0, 0, 0, '\0'};
-	matrix_2d = {matrix_1, matrix_2, matrix_3, matrix_4, '\0'};
+	matrix_2d = (char **) malloc(sizeof(char *) * grid_size);
+	i = 0;
+	while (i < grid_size)
+	{
+		matrix_2d[i] = (char *) malloc(sizeof(char) * (grid_size + 1));
+		j = 0;
+		while (j < grid_size)
+		{
+			matrix_2d[i][j] = j + '1';
+			j++;
+		}
+		matrix_2d[i][j] = '\0';
+		i++;
+	}
 	return (matrix_2d);
 }

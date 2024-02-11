@@ -12,24 +12,53 @@
 
 #include "guard_lib.h"
 
+void	ft_write_malloc_error(void)
+{
+	char	*malloc_fail_msg;
+
+	malloc_fail_msg = "Malloc failure on matrix initialization\n";
+	write(2, malloc_fail_msg, sizeof(malloc_fail_msg) - 1);
+}
+
+void	ft_free_matrices_on_fail(char **matrix_2d, int i)
+{
+	while (i-- > 0)
+		free(matrix_2d[i]);
+	free(matrix_2d);
+	ft_write_malloc_error();
+}
+
+void	ft_matrix_1d_fill(char **matrix_2d, int i, int grid_size)
+{
+	int	j;
+
+	j = 0;
+	while (j < grid_size)
+	{
+		matrix_2d[i][j] = j + '1';
+		j++;
+	}
+	matrix_2d[i][j] = '\0';
+}
+
 char	**ft_matrix_2d_init(int grid_size)
 {
 	char	**matrix_2d;
 	int		i;
-	int		j;
 
 	matrix_2d = (char **) malloc(sizeof(char *) * grid_size);
+	if (!matrix_2d)
+	{
+		ft_write_malloc_error();
+		return (NULL);
+	}
 	i = 0;
-	while (i < grid_size)
+	while (matrix_2d && i < grid_size)
 	{
 		matrix_2d[i] = (char *) malloc(sizeof(char) * (grid_size + 1));
-		j = 0;
-		while (j < grid_size)
-		{
-			matrix_2d[i][j] = j + '1';
-			j++;
-		}
-		matrix_2d[i][j] = '\0';
+		if (!matrix_2d[i])
+			ft_free_matrices_on_fail(matrix_2d, i);
+		ft_matrix_1d_fill(matrix_2d, i, grid_size);
 		i++;
 	}
 	return (matrix_2d);

@@ -35,7 +35,7 @@ void	ft_matrix_1d_fill(char **matrix_2d, int i, int grid_size)
 	j = 0;
 	while (j < grid_size)
 	{
-		matrix_2d[i][j] = j + '1';
+		matrix_2d[i][j] = '0';
 		j++;
 	}
 	matrix_2d[i][j] = '\0';

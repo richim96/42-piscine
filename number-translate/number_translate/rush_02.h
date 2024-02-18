@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   rush_02.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduribei <eduribei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmei <rmei@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/11 10:04:29 by eduribei          #+#    #+#             */
-/*   Updated: 2024/02/18 11:00:50 by eduribei         ###   ########.fr       */
+/*   Created: 2024/02/18 20:09:47 by rmei              #+#    #+#             */
+/*   Updated: 2024/02/18 22:54:56 by rmei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush-02.h"
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putstr(char *str)
-{
-	int		counter;
-
-	counter = 0;
-	while (str[counter])
-	{
-		ft_putchar(str[counter]);
-		counter++;
-	}
-}
-/*
-int		main(void)
-{
-	ft_putstr("striiiing");
-}
-*/
+int		ft_strlen(char *str);
+int		ft_is_args_valid(int argc, char **argv, char **dict, char *num);
+void	ft_putstr(char *str);
+char	*ft_strcpy(char *dest, char *src);

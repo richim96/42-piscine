@@ -6,7 +6,7 @@
 /*   By: rmei <rmei@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 11:31:20 by rmei              #+#    #+#             */
-/*   Updated: 2024/02/18 18:37:03 by rmei             ###   ########.fr       */
+/*   Updated: 2024/02/18 20:05:30 by rmei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,24 @@ int	ft_lines_count(char *file_str)
 	return (lines);
 }
 
-char	*ft_newline_pointer_shift(char *str)
+char	*ft_newline_pointer_shift(char *str, int idx)
 {
-	while (*str != '\n')
+	while (idx > 0)
+	{
+		while (*str != '\n')
+			str++;
+		while (*str == '\n')
+			str++;
+		idx--;
+	}
+	return (str);
+}
+
+char	*ft_word_pointer_shift(char *str)
+{
+	while (*str != ':')
 		str++;
-	while (*str == '\n')
+	while (*str == ':' || *str == ' ')
 		str++;
 	return (str);
 }
@@ -50,12 +63,8 @@ char	*ft_take_num(char *file_str, int idx)
 	char	*num_str;
 
 	str_temp = file_str;
-	while (idx > 0)
-	{
-		str_temp = ft_newline_pointer_shift(str_temp);
-		idx--;
-	}
-	i = 0;	
+	str_temp = ft_newline_pointer_shift(str_temp, idx);
+	i = 0;
 	while (str_temp[i] >= '0' && str_temp[i] <= '9')
 		i++;
 	num_str = (char *) malloc(sizeof(char) * i);
@@ -74,35 +83,28 @@ char	*ft_take_num(char *file_str, int idx)
 char	*ft_take_word(char *file_str, int idx)
 {
 	int		i;
+	int		j;
 	char	*str_temp;
 	char	*num_word;
 
 	str_temp = file_str;
-	while (idx > 0)
-	{
-		str_temp = ft_newline_pointer_shift(str_temp);
-		idx--;
-	}
-	while (*str_temp != ':')
-		str_temp++;
-	while (*str_temp == ':' || *str_temp == ' ')
-		str_temp++;
+	str_temp = ft_newline_pointer_shift(str_temp, idx);
+	str_temp = ft_word_pointer_shift(str_temp);
 	i = 0;
-	while (str_temp[i] != '\n')
+	while (str_temp[i] != '\n' && str_temp[i] != '\0')
 		i++;
 	num_word = (char *) malloc(sizeof(char) * i);
 	if (!num_word)
 		return (NULL);
 	i = 0;
-	while (str_temp[i] != '\n')
+	j = 0;
+	while (str_temp[i] != '\n' && str_temp[i] != '\0')
 	{
-		if (str_temp[i] == ' ' && str_temp[i + 1] == ' ')
+		while (str_temp[i] == ' ' && str_temp[i + 1] == ' ')
 			i++;
-		else
-		{
-			num_word[i] = str_temp[i];
-			i++;
-		}
+		num_word[j] = str_temp[i];
+		i++;
+		j++;
 	}
 	return (num_word);
 }

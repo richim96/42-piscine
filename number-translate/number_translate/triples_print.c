@@ -6,7 +6,7 @@
 /*   By: rmei <rmei@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 19:56:07 by rmei              #+#    #+#             */
-/*   Updated: 2024/02/18 17:31:15 by lshapkin         ###   ########.fr       */
+/*   Updated: 2024/02/18 21:06:14 by rmei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,22 +95,3 @@ void	ft_classifiers(int n, char ***dict, int n_keys)
 	word = ft_find_word(dict, n_keys, tmp_digit);
 	ft_putstr(word);
 }
-
-	
-/*DELETE!!
-int	main(void)
-{
-	char	input[] = "123";
-	char	*dict0[2] = {"1", "one"};
-	char	*dict1[2] = {"100", "hundred"};
-	char	*dict2[2] = {"20", "twenty"};
-	char	*dict3[2] = {"3", "three"};
-	char	*dict4[2] = {"1000", "thousand"};
-	char	**dict[5] = {dict0, dict1, dict2, dict3, dict4};
-
-	ft_first_digit_write(dict, input, 5);
-	ft_second_digit_write(dict, input, 5);
-	ft_third_digit_write(dict, input, 5);
-	ft_classifiers(3, dict, 5);
-}
-*/

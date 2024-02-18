@@ -6,7 +6,7 @@
 /*   By: rmei <rmei@student.42berlin.de>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:54:08 by rmei              #+#    #+#             */
-/*   Updated: 2024/02/18 18:37:06 by rmei             ###   ########.fr       */
+/*   Updated: 2024/02/18 20:08:26 by rmei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ char	*ft_file_read(char *file_path)
 	close(fd);
 	if (fsize < 1)
 		return (NULL);
+	file_str[fsize] = '\0';
 	return (file_str);
 }
 
@@ -96,21 +97,4 @@ char	***ft_dict_make(char *file_path)
 	}
 	free(file_str);
 	return (dict);
-}
-
-int	main(void)
-{
-	char ***dict = ft_dict_make("numbers.dict");
-	int		i;
-	
-	if (!dict)
-		return (0);
-	i = 0;
-	while (i < 41)
-	{
-		//printf("%s : ", dict[i][0]);
-		printf("%s\n", dict[i][1]);
-		i++;
-	}
-	return (0);
 }

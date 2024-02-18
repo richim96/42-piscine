@@ -1,5 +1,16 @@
-#include <unistd.h>
-//#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmei <rmei@student.42berlin.de>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/18 22:23:26 by rmei              #+#    #+#             */
+/*   Updated: 2024/02/18 22:46:07 by rmei             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "rush_02.h"
 
 char	*ft_find_word(char ***dict, int n_keys, char *to_find);
 
@@ -69,22 +80,3 @@ int	ft_classifiers_check(int n, char ***dict, int n_keys)
 		return (1);
 	return (0);
 }
-
-
-/*DELETE!!
-int	main(void)
-{
-	char	input[] = "143";
-	char	*dict0[2] = {"1", "one"};
-	char	*dict1[2] = {"100", "hundred"};
-	char	*dict2[2] = {"20", "twenty"};
-	char	*dict3[2] = {"3", "three"};
-	char	*dict4[2] = {"1000", "thousand"};
-	char	**dict[5] = {dict0, dict1, dict2, dict3, dict4};
-
-	printf("%d\n", ft_first_digit_check(dict, input, 5));
-	printf("%d\n", ft_second_digit_check(dict, input, 5));
-	printf("%d\n", ft_third_digit_check(dict, input, 5));
-	printf("%d\n", ft_classifiers_check(3, dict, 5));
-}
-*/

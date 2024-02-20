@@ -3,3 +3,4 @@
 
 1. Skyscraper Puzzle.
 2. Number Translation.
+3. Find largest square.

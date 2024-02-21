@@ -1,9 +1,9 @@
-SRC	= main.c find_square.c
+SRC	= main.c map_read.c square_find.c square_print.c funcs.c
 OBJS	= ${SRC:.c=.o}
-HEAD	= globals.h
+HEAD	= globals.h libs.h
 NAME	= bsq
 CC	= cc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g
 
 all:	${NAME}
 
